@@ -1,0 +1,231 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rise Beyond Gym</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+  <div class="logo">Rise Beyond</div>
+  <input type="checkbox" id="menu-toggle">
+  <label for="menu-toggle" class="menu-icon">&#9776;</label>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="#register">Register</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+  </ul>
+</nav>
+
+  <header class="main-header">
+    <h1>Rise Beyond Gym</h1>
+    <p>Empowering Everyone — Every Body, Every Ability</p>
+    <nav>
+  <a href="index.html">Home</a> |
+  <a href="about.html">About</a>
+</nav>
+
+  </header>
+
+  <section class="hero">
+    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1280&q=80" alt="Inclusive Gym" />
+    <div class="hero-text">
+      <h2>Adaptive Fitness for All</h2>
+      <p>Join a supportive, accessible, and health-focused gym community for every type of body.</p>
+      <a href="#register" class="btn">Book a Session</a>
+    </div>
+  </section>
+
+  <section class="categories">
+    <h2>Choose Your Category</h2>
+    <div class="category-grid">
+      <div class="category-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/4473/4473456.png" alt="Disabled Icon">
+        <h3>Disabled</h3>
+        <p>Specialized fitness plans and equipment tailored to different abilities.</p>
+      </div>
+      <div class="category-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/2965/2965567.png" alt="Health Issues Icon">
+        <h3>Health Issues</h3>
+        <p>Gentle workouts for people recovering from or managing health conditions.</p>
+      </div>
+      <div class="category-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Regular Person Icon">
+        <h3>Regular Person</h3>
+        <p>Stay fit and energized with our standard training programs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="register" id="register">
+    <h2>Register & Book Your Session</h2>
+     <form action=" https://formspree.io/f/mldllyke" method="POST">
+      <input type="text" name="fullname" placeholder="Your Full Name" required />
+      <select name="category" required>
+        <option value="">-- Select Category --</option>
+        <option value="Disabled">Disabled</option>
+        <option value="Health Issues">Health Issues</option>
+        <option value="Regular">Regular Person</option>
+      </select>
+      <input type="date" name="sessionDate" required />
+      <input type="time" name="sessionTime" required />
+      <button type="submit" class="btn">Submit</button>
+    </form>
+    <p id="successMsg" style="color: green; display: none;">Your booking was submitted successfully!</p>
+
+  </section>
+  <section class="testimonials">
+  <h2>What Our Members Say</h2>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Member">
+      <p>"As someone living with a disability, this gym gave me hope and strength again. The staff is truly amazing!"</p>
+      <h4>- Sarah M.</h4>
+    </div>
+    <div class="testimonial-card">
+      <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Member">
+      <p>"Recovering from surgery was tough, but their custom programs changed everything. I feel alive again!"</p>
+      <h4>- Daniel K.</h4>
+    </div>
+    <div class="testimonial-card">
+      <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Member">
+      <p>"Even as a regular gym-goer, I love how inclusive and motivating this environment is. Highly recommend!"</p>
+      <h4>- James O.</h4>
+    </div>
+  </div>
+</section>
+
+
+  <footer>
+    <p>&copy; 2025 Rise Beyond Gym. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Placeholder JS for form (actual email logic will be added later)
+    document.getElementById("bookingForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Booking submitted! Admin will be notified via email.");
+      this.reset();
+    });
+  </script>
+  <script>
+  const form = document.querySelector("form");
+  const successMsg = document.getElementById("successMsg");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        successMsg.style.display = 'block';
+        form.reset();
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      alert("Server error. Try again later.");
+    }
+  });
+</script>
+<script>
+  const form = document.querySelector("form");
+  const successMsg = document.getElementById("successMsg");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        successMsg.style.display = 'block';
+        form.reset();
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      alert("Server error. Try again later.");
+    }
+  });
+</script>
+<script>
+  const form = document.querySelector("form");
+  const successMsg = document.getElementById("successMsg");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        successMsg.style.display = 'block';
+        form.reset();
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      alert("Server error. Try again later.");
+    }
+  });
+</script>
+
+<script>
+  const form = document.querySelector("form");
+  const successMsg = document.getElementById("successMsg");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        successMsg.style.display = 'block';
+        form.reset();
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      alert("Server error. Try again later.");
+    }
+  });
+</script>
+</body>
+</html>
